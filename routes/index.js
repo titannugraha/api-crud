@@ -1,6 +1,6 @@
 const routes = require("express").Router();
 
-routes.get("/api", (req, res) => {
+routes.get("/", (req, res) => {
   res.json({
     message: "Home Page Server is Up !",
   });

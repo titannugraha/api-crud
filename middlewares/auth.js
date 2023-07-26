@@ -21,7 +21,7 @@ const auth = (req, res, next) => {
 };
 
 const admin = (req, res, next) => {
-  const user_token = req.headers.user_token;
+  const user_token = req.headers.user_token ;
 
   if (user_token) {
     try {

@@ -16,8 +16,7 @@ class ProductController {
       let products = fs.readFileSync("./products.json", "utf8");
       products = JSON.parse(products);
       const { nama, hargaBeli, hargaJual, stok } = req.body;
-      const foto = req.file;
-      const fotoPath = foto ? foto.path : null;
+      const foto = req.file.filename;
       let id = products[products.length - 1].id + 1;
 
       const existingProduct = products.find((product) => product.nama === nama);
@@ -30,7 +29,7 @@ class ProductController {
         hargaBeli,
         hargaJual,
         stok,
-        fotoPath,
+        foto,
       };
 
       products.push(newProduct);
@@ -93,18 +92,18 @@ class ProductController {
         return res.status(404).json({ message: "Product not found" });
       }
 
-      const foto = req.file;
-      let fotoPath = products[productIndex].fotoPath;
+      const foto = req.file.filename;
+      let fotoPath = products[productIndex].foto;
 
       if (foto) {
-        fotoPath = foto.path;
+        fotoPath = foto;
       }
 
       products[productIndex].nama = nama;
       products[productIndex].hargaBeli = hargaBeli;
       products[productIndex].hargaJual = hargaJual;
       products[productIndex].stok = stok;
-      products[productIndex].fotoPath = fotoPath; // Update the fotoPath
+      products[productIndex].fotoPath = fotoPath;
 
       fs.writeFileSync(
         "./products.json",

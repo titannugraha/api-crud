@@ -10,5 +10,11 @@
       "username": "titan",
       "password": "$2b$08$hy0RTWEkQe1BkTnw0ax/jeas/kmC9hbU1bXyp.29yLuqJJrSXuxS6",
       "role": "admin"
+   },
+   {
+      "id": 3,
+      "username": "guest",
+      "password": "$2b$08$DR/igKcyriO8vOGmwTuicO6EAaxPpjgM5RK/PSyVp53Gaylx5fDtK",
+      "role": "Guest"
    }
 ]

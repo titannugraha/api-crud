@@ -56,24 +56,28 @@ class UserController {
 
       if (foundUser) {
         if (decryptPwd(password, foundUser.password)) {
-          let user_token = generateToken(foundUser);
-          res.status(200).json({
-            user_token,
-          });
+          if (foundUser.role === "admin") {
+            let user_token = generateToken(foundUser);
+            return res.status(200).json({
+              user_token,
+            });
+          } else {
+            return res.status(403).json({
+              message: "You don't have permission to log in as an admin.",
+            });
+          }
         } else {
-          res.status(403).json({
-            message: `Invalid password!`,
+          return res.status(403).json({
+            message: "Invalid password!",
           });
         }
       } else {
-        res.status(404).json({
-          message: `User not found!`,
+        return res.status(404).json({
+          message: "User not found!",
         });
       }
-
-      res.status(200).json();
     } catch (err) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 

@@ -5,7 +5,7 @@
     "hargaBeli": "2000",
     "hargaJual": "2200",
     "stok": "4",
-    "fotoPath": "public\\uploads\\products-1690364932880-763113454.jpg"
+    "foto": "products-1690364932880-763113454.jpg"
   },
   {
     "id": 3,
@@ -13,7 +13,7 @@
     "hargaBeli": "2000",
     "hargaJual": "2200",
     "stok": "4",
-    "fotoPath": "public\\uploads\\products-1690366239340-202200348.jpg"
+    "foto": "products-1690366239340-202200348.jpg"
   },
   {
     "id": 4,
@@ -21,6 +21,14 @@
     "hargaBeli": "2000",
     "hargaJual": "2200",
     "stok": "4",
-    "fotoPath": "public\\uploads\\products-1690366369043-287177023.jpg"
+    "foto": "products-1690366369043-287177023.jpg"
+  },
+  {
+    "id": 5,
+    "nama": "Mesin Cuci",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
   }
 ]

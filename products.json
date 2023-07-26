@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nama": "Kulkas",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "fotoPath": "public\\uploads\\products-1690364932880-763113454.jpg"
+  },
+  {
+    "id": 3,
+    "nama": "Handphone",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "fotoPath": "public\\uploads\\products-1690366239340-202200348.jpg"
+  },
+  {
+    "id": 4,
+    "nama": "Laptop",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "fotoPath": "public\\uploads\\products-1690366369043-287177023.jpg"
+  }
+]

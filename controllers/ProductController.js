@@ -2,10 +2,35 @@ const fs = require("fs");
 class ProductController {
   static async getAll(req, res) {
     try {
+      // Membaca isi file JSON dan mengubahnya menjadi objek JavaScript
       let products = fs.readFileSync("./products.json", "utf8");
       products = JSON.parse(products);
-      res.status(200).json(products);
-    } catch {
+
+      // Mendapatkan parameter query dari permintaan HTTP
+      const page = parseInt(req.query.page) || 0;
+      const limit = parseInt(req.query.limit) || 10;
+      const search = req.query.search_query || "";
+      const offset = limit * page;
+
+      console.log(search);
+      const filteredProducts = products.filter((product) => {
+        return product.nama.toLowerCase().includes(search.toLowerCase());
+      });
+
+      console.log(filteredProducts)
+      const totalRows = filteredProducts.length;
+      const totalPage = Math.ceil(totalRows / limit);
+
+      const paginatedProducts = filteredProducts.slice(offset, offset + limit);
+      console.log(paginatedProducts);
+      res.status(200).json({
+        result: paginatedProducts,
+        page: page,
+        limit: limit,
+        totalRows: totalRows,
+        totalPage: totalPage,
+      });
+    } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Internal Server Error" });
     }

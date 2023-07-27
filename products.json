@@ -24,11 +24,79 @@
     "foto": "products-1690366369043-287177023.jpg"
   },
   {
-    "id": 5,
+    "id": 6,
     "nama": "Mesin Cuci",
     "hargaBeli": "2000",
     "hargaJual": "2200",
     "stok": "4",
     "foto": "products-1690371042399-711940033.jpg"
+  },
+  {
+    "id": 7,
+    "nama": "Kipas Angin",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
+  },{
+    "id": 8,
+    "nama": "Mesin Cukur",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
+  },{
+    "id": 9,
+    "nama": "Gelas",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
+  },{
+    "id": 10,
+    "nama": "Piring",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
+  },{
+    "id": 12,
+    "nama": "Mouse",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690371042399-711940033.jpg"
+  },
+  {
+    "id": 13,
+    "nama": "Lemari",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690364932880-763113454.jpg"
+  },
+  {
+    "id": 14,
+    "nama": "Kursi",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690364932880-763113454.jpg"
+  },
+  {
+    "id": 15,
+    "nama": "Kasur",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690364932880-763113454.jpg"
+  },
+  {
+    "id": 16,
+    "nama": "Televisi",
+    "hargaBeli": "2000",
+    "hargaJual": "2200",
+    "stok": "4",
+    "foto": "products-1690364932880-763113454.jpg"
   }
 ]

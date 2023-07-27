@@ -59,7 +59,7 @@ class UserController {
           if (foundUser.role === "admin") {
             let user_token = generateToken(foundUser);
             return res.status(200).json({
-              user_token,
+              user_token
             });
           } else {
             return res.status(403).json({

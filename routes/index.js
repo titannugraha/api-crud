@@ -9,8 +9,8 @@ routes.get("/", (req, res) => {
 const productRoutes = require('./productRoutes')
 const userRoutes = require('./userRoutes')
 
-routes.use('/api/products',productRoutes)
-routes.use('/api/users',userRoutes)
+routes.use('/products',productRoutes)
+routes.use('/users',userRoutes)
 
 
 module.exports = routes;

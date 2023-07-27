@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 const routes = require("./routes");
-app.use(routes);
+app.use("/api", routes);
 
 app.listen(port, (req, res) => {
   console.log(`App listen on port ${port}`);

@@ -17,7 +17,7 @@ class ProductController {
         return product.nama.toLowerCase().includes(search.toLowerCase());
       });
 
-      console.log(filteredProducts)
+      console.log(filteredProducts);
       const totalRows = filteredProducts.length;
       const totalPage = Math.ceil(totalRows / limit);
 
@@ -108,16 +108,17 @@ class ProductController {
 
       const productId = +req.params.id;
       const { nama, hargaBeli, hargaJual, stok } = req.body;
+      const foto = req.file.filename;
 
       const productIndex = products.findIndex(
         (product) => product.id === productId
       );
 
+      console.log(productIndex)
       if (productIndex === -1) {
         return res.status(404).json({ message: "Product not found" });
       }
 
-      const foto = req.file.filename;
       let fotoPath = products[productIndex].foto;
 
       if (foto) {
@@ -128,7 +129,7 @@ class ProductController {
       products[productIndex].hargaBeli = hargaBeli;
       products[productIndex].hargaJual = hargaJual;
       products[productIndex].stok = stok;
-      products[productIndex].fotoPath = fotoPath;
+      products[productIndex].foto = fotoPath;
 
       fs.writeFileSync(
         "./products.json",
@@ -137,6 +138,27 @@ class ProductController {
       );
 
       res.status(200).json(products);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
+  static async getById(req, res) {
+    try {
+      let products = fs.readFileSync("./products.json", "utf8");
+      products = JSON.parse(products);
+      const productId = +req.params.id;
+      const productIndex = products.findIndex(
+        (product) => product.id === productId
+      );
+      if (productIndex === -1) {
+        console.log(productIndex);
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      let result = products[productIndex];
+      res.status(200).json(result);
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Internal Server Error" });

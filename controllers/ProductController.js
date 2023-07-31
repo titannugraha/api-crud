@@ -79,28 +79,26 @@ class ProductController {
 
       const productId = +req.params.id;
 
-      const productIndex = products.findIndex(
-        (product) => product.id === productId
+      const updatedProducts = products.filter(
+        (product) => product.id !== productId
       );
 
-      if (productIndex === -1) {
-        return res.status(404).json({ message: "Product not found" });
+      if (products.length === updatedProducts.length) {
+        return res.status(404).json({ message: "Produk tidak ditemukan" });
       }
-
-      products.splice(productIndex, 1);
 
       await fs.writeFile(
         jsonFilePath,
-        JSON.stringify(products, null, 2),
+        JSON.stringify(updatedProducts, null, 2),
         "utf8"
       );
 
       res.status(200).json({
-        message: `Delete Successfully at ${productId} `,
+        message: `Berhasil dihapus pada ID produk ${productId}`,
       });
     } catch (err) {
       console.error(err);
-      res.status(500).json({ message: "Internal Server Error" });
+      res.status(500).json({ message: "Kesalahan Server Internal" });
     }
   }
   static async update(req, res) {

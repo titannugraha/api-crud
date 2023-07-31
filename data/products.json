@@ -34,10 +34,10 @@
   {
     "id": 7,
     "nama": "Laptop",
-    "hargaBeli": "200000",
+    "hargaBeli": "200002",
     "hargaJual": "220000",
     "stok": "2",
-    "foto": "products-1690524137724-27667916.jpg",
+    "foto": "products-1690826634264-638901970.jpg",
     "fotoPath": "products-1690524073837-402942396.jpg"
   },
   {
@@ -51,14 +51,6 @@
   {
     "id": 9,
     "nama": "Gelas",
-    "hargaBeli": "2000",
-    "hargaJual": "2200",
-    "stok": "4",
-    "foto": "products-1690371042399-711940033.jpg"
-  },
-  {
-    "id": 10,
-    "nama": "Piring",
     "hargaBeli": "2000",
     "hargaJual": "2200",
     "stok": "4",

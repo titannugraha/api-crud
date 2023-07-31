@@ -1,11 +1,13 @@
 const { decryptPwd, encryptPwd } = require("../helpers/bcrypt");
 const { generateToken } = require("../helpers/jwt");
-const {promises: fs} = require("fs");
+const path = require("path");
+const { promises: fs } = require("fs");
 
 class UserController {
   static async getAll(req, res) {
     try {
-      let users = await fs.readFile("./data/users.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "users.json");
+      let users = await fs.readFile(jsonFilePath, "utf8");
       users = JSON.parse(users);
       res.status(200).json(users);
     } catch (err) {
@@ -59,7 +61,7 @@ class UserController {
           if (foundUser.role === "admin") {
             let user_token = generateToken(foundUser);
             return res.status(200).json({
-              user_token
+              user_token,
             });
           } else {
             return res.status(403).json({

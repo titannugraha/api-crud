@@ -21,7 +21,8 @@ class UserController {
       if (!username || !password || !role) {
         return res.status(400).json({ message: "Invalid input" });
       }
-      let users = await fs.readFile("./data/users.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "users.json");
+      let users = await fs.readFile(jsonFilePath, "utf8");
       users = JSON.parse(users);
 
       const existingUser = users.find((user) => user.username === username);
@@ -38,7 +39,7 @@ class UserController {
       };
 
       users.push(newUser);
-      await fs.writeFile("./data/users.json", JSON.stringify(users, null, 3));
+      await fs.writeFile(jsonFilePath, JSON.stringify(users, null, 3));
 
       const { password: foundPassword, ...userWithoutPassword } = newUser;
       console.log(users);
@@ -52,7 +53,8 @@ class UserController {
   static async login(req, res) {
     try {
       const { username, password } = req.body;
-      let users = await fs.readFile("./data/users.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "users.json");
+      let users = await fs.readFile(jsonFilePath, "utf8");
       users = JSON.parse(users);
       let foundUser = users.find((user) => user.username === username);
 
@@ -86,7 +88,8 @@ class UserController {
   static async getTokenUser(req, res) {
     try {
       const id = +req.userData.id;
-      let users = await fs.readFile("./data/users.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "users.json");
+      let users = await fs.readFile(jsonFilePath, "utf8");
       users = JSON.parse(users);
 
       // Find the user with the specified ID

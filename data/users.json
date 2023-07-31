@@ -22,5 +22,11 @@
       "username": "kacung",
       "password": "$2b$08$GkIOKIpCbpk9TqgMmlU2LumoptN43E2yhaMUtKHeTEZ7J/wYsDUuu",
       "role": "admin"
+   },
+   {
+      "id": 5,
+      "username": "kacung1",
+      "password": "$2b$08$uNmQoVW3fD9Ddoe6YUStv.Ou6kH.vo3AdHsF9SCOc7z/RTYh8q7Ha",
+      "role": "admin"
    }
 ]

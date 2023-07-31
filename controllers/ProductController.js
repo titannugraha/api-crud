@@ -1,12 +1,12 @@
-const { promise: fs } = require("fs");
+const { promises: fs } = require("fs");
+const path = require("path");
 class ProductController {
   static async getAll(req, res) {
     try {
-      // Membaca isi file JSON dan mengubahnya menjadi objek JavaScript
-      let products = await fs.readFile("./data/products.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "products.json");
+      let products = await fs.readFile(jsonFilePath, "utf8");
       products = JSON.parse(products);
 
-      // Mendapatkan parameter query dari permintaan HTTP
       const page = parseInt(req.query.page) || 0;
       const limit = parseInt(req.query.limit) || 10;
       const search = req.query.search_query || "";
@@ -38,7 +38,8 @@ class ProductController {
 
   static async add(req, res) {
     try {
-      let products = await fs.readFile("./data/products.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "products.json");
+      let products = await fs.readFile(jsonFilePath, "utf8");
       products = JSON.parse(products);
       const { nama, hargaBeli, hargaJual, stok } = req.body;
       const foto = req.file.filename;
@@ -59,7 +60,7 @@ class ProductController {
 
       products.push(newProduct);
       await fs.writeFile(
-        "./data/products.json",
+        jsonFilePath,
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -72,7 +73,8 @@ class ProductController {
 
   static async delete(req, res) {
     try {
-      let products = await fs.readFile("./data/products.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "products.json");
+      let products = await fs.readFile(jsonFilePath, "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -88,7 +90,7 @@ class ProductController {
       products.splice(productIndex, 1);
 
       await fs.writeFile(
-        "./data/products.json",
+        jsonFilePath,
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -103,7 +105,8 @@ class ProductController {
   }
   static async update(req, res) {
     try {
-      let products = await fs.readFile("./data/products.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "products.json");
+      let products = await fs.readFile(jsonFilePath, "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -132,7 +135,7 @@ class ProductController {
       products[productIndex].foto = fotoPath;
 
       await fs.writeFile(
-        "./data/products.json",
+        jsonFilePath,
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -146,7 +149,8 @@ class ProductController {
 
   static async getById(req, res) {
     try {
-      let products = await fs.readFile("./data/products.json", "utf8");
+      const jsonFilePath = path.join(process.cwd(), "data", "products.json");
+      let products = await fs.readFile(jsonFilePath, "utf8");
       products = JSON.parse(products);
       const productId = +req.params.id;
       const productIndex = products.findIndex(

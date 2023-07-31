@@ -1,5 +1,4 @@
 [
-   
    {
       "id": 1,
       "username": "admin",
@@ -17,5 +16,11 @@
       "username": "guest",
       "password": "$2b$08$DR/igKcyriO8vOGmwTuicO6EAaxPpjgM5RK/PSyVp53Gaylx5fDtK",
       "role": "Guest"
+   },
+   {
+      "id": 4,
+      "username": "kacung",
+      "password": "$2b$08$GkIOKIpCbpk9TqgMmlU2LumoptN43E2yhaMUtKHeTEZ7J/wYsDUuu",
+      "role": "admin"
    }
 ]

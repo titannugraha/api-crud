@@ -1,9 +1,9 @@
-const fs = require("fs");
+const { promise: fs } = require("fs");
 class ProductController {
   static async getAll(req, res) {
     try {
       // Membaca isi file JSON dan mengubahnya menjadi objek JavaScript
-      let products = fs.readFileSync("./data/products.json", "utf8");
+      let products = await fs.readFile("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       // Mendapatkan parameter query dari permintaan HTTP
@@ -38,7 +38,7 @@ class ProductController {
 
   static async add(req, res) {
     try {
-      let products = fs.readFileSync("./data/products.json", "utf8");
+      let products = await fs.readFile("./data/products.json", "utf8");
       products = JSON.parse(products);
       const { nama, hargaBeli, hargaJual, stok } = req.body;
       const foto = req.file.filename;
@@ -58,7 +58,7 @@ class ProductController {
       };
 
       products.push(newProduct);
-      fs.writeFileSync(
+      await fs.writeFile(
         "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
@@ -72,7 +72,7 @@ class ProductController {
 
   static async delete(req, res) {
     try {
-      let products = fs.readFileSync("./data/products.json", "utf8");
+      let products = await fs.readFile("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -87,7 +87,7 @@ class ProductController {
 
       products.splice(productIndex, 1);
 
-      fs.writeFileSync(
+      await fs.writeFile(
         "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
@@ -103,7 +103,7 @@ class ProductController {
   }
   static async update(req, res) {
     try {
-      let products = fs.readFileSync("./data/products.json", "utf8");
+      let products = await fs.readFile("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -114,7 +114,7 @@ class ProductController {
         (product) => product.id === productId
       );
 
-      console.log(productIndex)
+      console.log(productIndex);
       if (productIndex === -1) {
         return res.status(404).json({ message: "Product not found" });
       }
@@ -131,7 +131,7 @@ class ProductController {
       products[productIndex].stok = stok;
       products[productIndex].foto = fotoPath;
 
-      fs.writeFileSync(
+      await fs.writeFile(
         "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
@@ -146,7 +146,7 @@ class ProductController {
 
   static async getById(req, res) {
     try {
-      let products = fs.readFileSync("./data/products.json", "utf8");
+      let products = await fs.readFile("./data/products.json", "utf8");
       products = JSON.parse(products);
       const productId = +req.params.id;
       const productIndex = products.findIndex(

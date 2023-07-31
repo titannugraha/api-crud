@@ -1,5 +1,6 @@
 const { promises: fs } = require("fs");
 const path = require("path");
+
 class ProductController {
   static async getAll(req, res) {
     try {
@@ -86,12 +87,6 @@ class ProductController {
       if (products.length === updatedProducts.length) {
         return res.status(404).json({ message: "Produk tidak ditemukan" });
       }
-
-      await fs.writeFile(
-        jsonFilePath,
-        JSON.stringify(updatedProducts, null, 2),
-        "utf8"
-      );
 
       res.status(200).json({
         message: `Berhasil dihapus pada ID produk ${productId}`,

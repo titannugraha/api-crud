@@ -3,7 +3,7 @@ class ProductController {
   static async getAll(req, res) {
     try {
       // Membaca isi file JSON dan mengubahnya menjadi objek JavaScript
-      let products = fs.readFileSync("./products.json", "utf8");
+      let products = fs.readFileSync("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       // Mendapatkan parameter query dari permintaan HTTP
@@ -38,7 +38,7 @@ class ProductController {
 
   static async add(req, res) {
     try {
-      let products = fs.readFileSync("./products.json", "utf8");
+      let products = fs.readFileSync("./data/products.json", "utf8");
       products = JSON.parse(products);
       const { nama, hargaBeli, hargaJual, stok } = req.body;
       const foto = req.file.filename;
@@ -59,7 +59,7 @@ class ProductController {
 
       products.push(newProduct);
       fs.writeFileSync(
-        "./products.json",
+        "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -72,7 +72,7 @@ class ProductController {
 
   static async delete(req, res) {
     try {
-      let products = fs.readFileSync("./products.json", "utf8");
+      let products = fs.readFileSync("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -88,7 +88,7 @@ class ProductController {
       products.splice(productIndex, 1);
 
       fs.writeFileSync(
-        "./products.json",
+        "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -103,7 +103,7 @@ class ProductController {
   }
   static async update(req, res) {
     try {
-      let products = fs.readFileSync("./products.json", "utf8");
+      let products = fs.readFileSync("./data/products.json", "utf8");
       products = JSON.parse(products);
 
       const productId = +req.params.id;
@@ -132,7 +132,7 @@ class ProductController {
       products[productIndex].foto = fotoPath;
 
       fs.writeFileSync(
-        "./products.json",
+        "./data/products.json",
         JSON.stringify(products, null, 2),
         "utf8"
       );
@@ -146,7 +146,7 @@ class ProductController {
 
   static async getById(req, res) {
     try {
-      let products = fs.readFileSync("./products.json", "utf8");
+      let products = fs.readFileSync("./data/products.json", "utf8");
       products = JSON.parse(products);
       const productId = +req.params.id;
       const productIndex = products.findIndex(

@@ -5,7 +5,7 @@ const fs = require("fs");
 class UserController {
   static getAll(req, res) {
     try {
-      let users = fs.readFileSync("./users.json", "utf8");
+      let users = fs.readFileSync("./data/users.json", "utf8");
       users = JSON.parse(users);
       res.status(200).json(users);
     } catch (err) {
@@ -19,7 +19,7 @@ class UserController {
       if (!username || !password || !role) {
         return res.status(400).json({ message: "Invalid input" });
       }
-      let users = fs.readFileSync("./users.json", "utf8");
+      let users = fs.readFileSync("./data/users.json", "utf8");
       users = JSON.parse(users);
 
       const existingUser = users.find((user) => user.username === username);
@@ -36,7 +36,7 @@ class UserController {
       };
 
       users.push(newUser);
-      fs.writeFileSync("./users.json", JSON.stringify(users, null, 3));
+      fs.writeFileSync("./data/users.json", JSON.stringify(users, null, 3));
 
       const { password: foundPassword, ...userWithoutPassword } = newUser;
       console.log(users);
@@ -50,7 +50,7 @@ class UserController {
   static async login(req, res) {
     try {
       const { username, password } = req.body;
-      let users = fs.readFileSync("./users.json", "utf8");
+      let users = fs.readFileSync("./data/users.json", "utf8");
       users = JSON.parse(users);
       let foundUser = users.find((user) => user.username === username);
 
@@ -84,7 +84,7 @@ class UserController {
   static async getTokenUser(req, res) {
     try {
       const id = +req.userData.id;
-      let users = fs.readFileSync("./users.json", "utf8");
+      let users = fs.readFileSync("./data/users.json", "utf8");
       users = JSON.parse(users);
 
       // Find the user with the specified ID

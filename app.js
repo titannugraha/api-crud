@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const serverless = require("serverless-http");
 
 require("dotenv").config();
 const port = process.env.PORT || 8000;
@@ -41,3 +42,5 @@ app.locals.date = (date) => {
   ];
   return `${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}`;
 };
+
+module.exports.handler = serverless(app);
